@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RickMortyChallenge</string>
+
+
+    <!-- Character List activity -->
+    <string name="list_character_title">Characters</string>
+    <string name="list_characterDetail_title">Character Detail</string>
+
+    <!--Character detail activity -->
+    <string name="text_status">Status</string>
+    <string name="text_specie">Species</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_type">Type</string>
+    <string name="empty_text">-</string>
+
+
+    <!-- Error messages -->
+    <string name="common_error">Oooops… Something went wrong</string>
+</resources>

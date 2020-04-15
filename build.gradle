@@ -1,0 +1,84 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    ext.gradle_version = '3.2.1'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def releaseCandidate = 0
+
+ext {
+    /* app */
+    if (releaseCandidate != 0) {
+        appVersionName = "${versionMajor}.${versionMinor}.${versionPatch}.rc${releaseCandidate}"
+    } else {
+        appVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
+    appVersionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
+    appName = "RickMorty"
+    applicationId = "com.acorpas.rickmortychallenge"
+
+    minSdkVersion = 19
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '27.0.0'
+
+    /* Android core */
+    supportLibraryVersion = '27.1.1'
+    constraintLayoutVersion = '1.1.2'
+
+    /* android view utils */
+   picassoVersion = '2.71828'
+
+    /* android architecture components */
+    archLifecycleVersion = '1.1.1'
+
+    /* kotlin/java utils */
+    daggerVersion = '2.17'
+    rxKotlinVersion = '2.1.0'
+    rxAndroidVersion = '2.1.0'
+    ankoVersion = '0.10.4'
+    retrofitVersion = '2.3.0'
+    okhttp3LoggingInterceptor = '3.8.0'
+    ktxVersion = '0.3'
+    timberVersion = '4.7.1'
+
+    /* unit testing */
+    junitVersion = '4.12'
+    androidRunnerVersion = '1.0.2'
+    mockitoVersion = '2.13.0'
+    mockwebServerVersion = '3.8.1'
+
+    /* ui testing */
+    espressoCoreVersion = '3.0.2'
+    espressoTestRules = '0.5'
+    espressoIntents = '3.0.2'
+    espressoContrib = '2.2.2'
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+                name="characterVM"
+                type="com.acorpas.rickmortychallenge.ui.characterDetail.CharacterDetailVewModel"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    tools:title="@string/app_name"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/appbar"
+                android:id="@+id/cardView">
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <ImageView
+                        android:id="@+id/characterImageView"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:scaleType="fitXY"
+                        tools:src="@drawable/ic_launcher_background"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:imageUrl="@{characterVM.character.image}"/>
+
+                <TextView
+                        android:id="@+id/titleTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:text="@{characterVM.character.name}"
+                        android:textColor="@android:color/black"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/characterImageView"
+                        app:layout_constraintRight_toRightOf="@+id/characterImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/characterImageView"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:text="@sample/character.json/name" android:layout_marginStart="8dp"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="@+id/cardView" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+                android:text="@string/text_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewStatus"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="parent" android:padding="@dimen/margin5"/>
+        <TextView
+                android:text="@string/text_specie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewSpecie"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStatus"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/margin5"/>
+        <TextView
+                android:text="@string/text_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewGender"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/margin5"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSpecie"/>
+        <TextView
+                android:id="@+id/text_gender"
+                tools:text="@sample/character.json/gender"
+                android:text="@{characterVM.character.gender}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/margin5"
+                app:layout_constraintTop_toTopOf="@+id/textViewGender"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewGender"
+                app:layout_constraintStart_toEndOf="@+id/textViewGender"/>
+        <TextView
+                android:text="@string/text_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewType"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewGender"
+                app:layout_constraintStart_toStartOf="parent" android:padding="@dimen/margin5"/>
+        <TextView
+                android:text="@{characterVM.character.status}"
+                tools:text="@sample/character.json/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_status"
+                app:layout_constraintTop_toTopOf="@+id/textViewStatus" android:layout_marginBottom="8dp"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewStatus"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewStatus" android:padding="@dimen/margin5"
+        />
+        <TextView
+                android:id="@+id/text_specie"
+                android:text="@{characterVM.character.species}"
+                tools:text="@sample/character.json/species"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin5"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSpecie"
+                app:layout_constraintTop_toTopOf="@+id/textViewSpecie"
+                app:layout_constraintStart_toEndOf="@+id/textViewSpecie"
+                app:layout_constraintVertical_bias="1.0"/>
+        <TextView
+                android:id="@+id/text_type"
+                tools:text="@sample/character.json/type"
+                android:text="@{characterVM.character.type}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin5"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewType"
+                app:layout_constraintTop_toTopOf="@+id/textViewType"
+                app:layout_constraintStart_toEndOf="@+id/textViewType"
+                app:layout_constraintVertical_bias="0.0"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>
+
+
